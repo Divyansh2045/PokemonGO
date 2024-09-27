@@ -32,8 +32,11 @@ int main()
 	}
 	else
 	{
-		cout << "Invalid Input! Try again" << endl;
+		cout << "\nInvalid Input!  Please restart the game" << endl;
 	}
+	cout<<"But beware, Trainer, this is only the beginning."<<endl; 
+	cout << "Your journey is about to unfold.Now let’s see if you’ve got what it takes to keep going!\nGood luck, and remember… Choose wisely!" << endl;
 
 	return 0;
+
 }
