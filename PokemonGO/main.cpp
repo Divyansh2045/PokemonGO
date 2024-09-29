@@ -154,10 +154,11 @@ public:
 
 int main()
 {
-	Player player("Ash", Pokemon(100,"Pikachu",PokemonType::Electric));
+	
 	Pokemon defaultPokemon;
 
 	Pokemon Charmander(100, "Charmander ", PokemonType::Fire);
+	Player player("Ash", Charmander);
 
 	Pokemon Bulbasaur(100, "Bulbasaur ", PokemonType::Grass);
 	Pokemon CopyBulbasaur = Bulbasaur;
