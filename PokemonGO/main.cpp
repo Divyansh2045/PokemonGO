@@ -2,7 +2,8 @@
 #include<string>
 using namespace std;
 
-enum class pokemonChoice
+
+enum class PokemonChoice
 {
 	Bulbasaur = 1,
 	Charmander,
@@ -17,7 +18,8 @@ enum class PokemonType
 	Air,
 	Earth,
 	Electric,
-	Grass
+	Grass,
+	Normal
 };
 
 class Pokemon
@@ -31,7 +33,10 @@ public:
 
 	Pokemon()
 	{
-
+		Pokemon::name = "Unknown";
+		Pokemon::type = PokemonType::Normal;
+		Pokemon::health = 40;
+		cout << "A new pokemon has been created using the default constructor" << endl;
 	}
 
 	Pokemon(int pHealth, string pName, PokemonType pType)
@@ -39,6 +44,20 @@ public:
 		name = pName;
 		type = pType;
 		health = pHealth;
+		cout << "A new pokemon : "<<name<< "has been created using the parameterized constructor" << endl;
+	}
+
+	Pokemon(const Pokemon& other)
+	{
+		name = other.name;
+		type = other.type;
+		health = other.health;
+		cout << "A new pokemon : "<<other.name<<"has been created using the copy constructor" << endl;
+	}
+
+	~Pokemon()
+	{
+		cout <<"Pokemon: "<< name << " has been released" << endl;
 	}
 
 	void attack()
@@ -52,41 +71,45 @@ class Player
 private:
 	
 public:
-	string playerName;
+	string name;
 	Pokemon chosenPokemon;
-	int health;
+	//int health;
 	Player()
 	{
-
+		name = "Trainer";
+		chosenPokemon = Pokemon();
+		cout << "A new player named " << name << " has been created" << endl;
 	}
 
 	//~Player();
 
-	Player(int choice)
+	Player(string playerName, Pokemon pChosenPokemon)
 	{
-
+		name = playerName;
+		chosenPokemon = pChosenPokemon;
+		cout << " Player " << playerName << "  has been created" << endl;
 	}
 
 	void choosePokemon(int choice)
 	{
-		switch ((pokemonChoice)choice)
+		switch ((PokemonChoice)choice)
 		{
-		case pokemonChoice::Bulbasaur:
+		case PokemonChoice::Bulbasaur:
 			chosenPokemon = Pokemon(100, "Bulbasaur", PokemonType::Grass);
 			break;
 
-		case pokemonChoice::Charmander:
+		case PokemonChoice::Charmander:
 			chosenPokemon = Pokemon(100, "Charmander", PokemonType::Fire);
 			break;
 
-		case pokemonChoice::Squirtle:
+		case PokemonChoice::Squirtle:
 			chosenPokemon = Pokemon(100, "Squirtle", PokemonType::Water);
 			break;
 		default:
 			chosenPokemon = Pokemon(100, "Pikachu", PokemonType::Electric);
 			break;
 		}
-		cout << "Player:" << playerName << " chose " << chosenPokemon.name <<"!"<< endl;
+		cout << "Player:" << name << " chose " << chosenPokemon.name <<"!"<< endl;
 	}
 	
 
@@ -99,14 +122,19 @@ private:
 public:
 	string professorName;
 
+	ProfessorOak(string name)
+	{
+		cout <<"Look!!"<< professorName << "just spawned" << endl;
+	}
+
 	void greetPlayer(Player &player)
 	{
 		cout << professorName << ": Hello there! Welcome to the world of Pokemon!\n";
 		cout << professorName << ": My name is Oak. People call me the Pokemon Professor!\n";
 		cout << professorName << ": But enough about me. Let's talk about you!\n";
 		cout <<professorName<< ": What is your name champion?" << endl;
-		getline(cin, player.playerName);
-		cout << "Welcome to the arena, " << player.playerName << endl;
+		getline(cin, player.name);
+		cout << "Welcome to the arena, " << player.name << endl;
 	}
 
 	void offerPokemonChoices(Player &player)
@@ -126,18 +154,23 @@ public:
 
 int main()
 {
-	Player player;
-	Pokemon placeholderpokemon;
-	ProfessorOak professor;
+	Player player("Ash", Pokemon(100,"Pikachu",PokemonType::Electric));
+	Pokemon defaultPokemon;
 
-	placeholderpokemon.name = "Pikachu";
-	placeholderpokemon.type = PokemonType::Electric;
-	placeholderpokemon.health = 100;
+	Pokemon Charmander(100, "Charmander ", PokemonType::Fire);
 
-	player.playerName = "Divyansh Nagar";
-	player.health = 250;
+	Pokemon Bulbasaur(100, "Bulbasaur ", PokemonType::Grass);
+	Pokemon CopyBulbasaur = Bulbasaur;
+	CopyBulbasaur.health = 80;
 
-	professor.professorName = "Professor Oak";
+	cout << "CopyBulbasaur : " << CopyBulbasaur.health << endl;
+
+	{
+		Pokemon pokemon;
+	}
+
+
+	ProfessorOak professor("Professor Oak");
 	professor.greetPlayer(player);
 	professor.offerPokemonChoices(player);
 
@@ -147,7 +180,6 @@ int main()
 
 	cout << "Professor Oak: You and " << (player.chosenPokemon.name) << " will be the best of friends" << endl;
 
-	placeholderpokemon.attack();
 	cout << "Professor Oak: Your journey begins now! Get ready to explore the vast world of Pokemon!\n";
 	
 	return 0;
