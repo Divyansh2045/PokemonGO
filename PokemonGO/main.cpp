@@ -6,9 +6,15 @@ void waitForEnter()
 {
 	cin.get();
 }
-void clearConsole()
-{
+
+// Function to clear the console
+void clearConsole() {
+	// Platform-specific clear console command
+#ifdef _WIN32
 	system("cls");
+#else
+	(void)system("clear");
+#endif
 }
 
 
