@@ -129,6 +129,13 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameLoop.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PokemonChoice.h" />
+    <ClInclude Include="PokemonType.h" />
+    <ClInclude Include="ProfessorOak.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -1,5 +1,7 @@
 #include <iostream>
 #include<string>
+#include "PokemonType.h"
+#include "PokemonChoice.h"
 using namespace std;
 
 void waitForEnter()
@@ -17,25 +19,6 @@ void clearConsole() {
 #endif
 }
 
-
-enum class PokemonChoice
-{
-	Bulbasaur = 1,
-	Charmander,
-	Squirtle,
-	Pikachu
-
-};
-enum class PokemonType
-{
-	Fire,
-	Water,
-	Air,
-	Earth,
-	Electric,
-	Grass,
-	Normal
-};
 
 class Pokemon
 {
@@ -221,6 +204,69 @@ public:
 
 };
 
+void gameLoop(Player& Player)
+
+{
+	bool keepPlaying = true;
+	int choice;
+	cin >> choice;
+
+	while (keepPlaying)
+	{
+		clearConsole();
+
+		cout << "The world is yours to explore, " << Player.name << "What will you do next ? " << endl;
+		cout << "1. Battle Wild Pokémon" << endl;
+		cout << "2. Visit PokeCenter" << endl;
+		cout << "3. Challenge Gyms" << endl;
+		cout << "4. Enter Pokémon League" << endl;
+		cout << "5. Quit" << endl;
+		cout << "Enter your choice" << endl;
+
+		// Clear the newline character left in the buffer after cin >> choice
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+		// Process the player's choice and display the corresponding message
+		switch (choice) {
+		case 1:
+			cout << "You look around... but all the wild Pokémon are on "
+				"vacation. Maybe try again later?\n";
+			break;
+		case 2:
+			cout<< "You head to the PokeCenter, but Nurse Joy is out on a coffee "
+				"break. Guess your Pokémon will have to tough it out for now!\n";
+			break;
+		case 3:
+			cout << "You march up to the Gym, but it's closed for renovations. "
+				"Seems like even Gym Leaders need a break!\n";
+			break;
+		case 4:
+			cout << "You boldly step towards the Pokémon League... but the "
+				"gatekeeper laughs and says, 'Maybe next time, champ!'\n";
+			break;
+		case 5:
+			cout << "You try to quit, but Professor Oak's voice echoes: "
+				"'There's no quitting in Pokémon training!'\n";
+			cout << "Are you sure you want to quit? (y/n): ";
+			char quitChoice;
+			cin >> quitChoice;
+			if (quitChoice == 'y' || quitChoice == 'Y') {
+				keepPlaying = false;
+			}
+			break;
+		default:
+			cout << "That's not a valid choice. Try again!\n";
+			break;
+		}
+
+		// Wait for Enter key before the screen is cleared and the menu is shown
+		waitForEnter();
+	}
+
+	cout << "Goodbye, " << Player.name << "! Thanks for playing!\n";
+}
+	
+
 int main()
 {
 	Pokemon Charmander(100, "Charmander ", PokemonType::Fire);
@@ -240,6 +286,8 @@ int main()
 	cout << "Professor Oak: You and " << (player.chosenPokemon.name) << " will be the best of friends" << endl;
 
 	cout << "Professor Oak: Your journey begins now! Get ready to explore the vast world of Pokemon!\n"; */
+
+	gameLoop(player);
 	
 	return 0;
 
