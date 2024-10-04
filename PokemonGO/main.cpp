@@ -1,102 +1,14 @@
 #include <iostream>
 #include<string>
+#include "Player.h"
 #include "PokemonType.h"
 #include "PokemonChoice.h"
 #include "Utility.h"
 #include <limits>
+
 using namespace std;
 
 
-
-class Pokemon
-{
-private:
-
-public:
-	string name;
-	PokemonType type;
-	int health;
-
-	Pokemon()
-	{
-		Pokemon::name = "Unknown";
-		Pokemon::type = PokemonType::Normal;
-		Pokemon::health = 40;
-	
-	}
-
-	Pokemon(int pHealth, string pName, PokemonType pType)
-	{
-		name = pName;
-		type = pType;
-		health = pHealth;
-	}
-
-	Pokemon(const Pokemon& other)
-	{
-		name = other.name;
-		type = other.type;
-		health = other.health;
-		
-	}
-
-	~Pokemon()
-	{
-	}
-
-	void attack()
-	{
-		cout << "The pokemon performs an attack!!" << endl;
-	}
-};
-
-class Player
-{
-private:
-	
-public:
-	string name;
-	Pokemon chosenPokemon;
-	//int health;
-	Player()
-	{
-		name = "Trainer";
-		chosenPokemon = Pokemon();
-		
-	}
-
-	//~Player();
-
-	Player(string playerName, Pokemon pChosenPokemon)
-	{
-		name = playerName;
-		chosenPokemon = pChosenPokemon;
-	}
-
-	void choosePokemon(int choice)
-	{
-		switch ((PokemonChoice)choice)
-		{
-		case PokemonChoice::Bulbasaur:
-			chosenPokemon = Pokemon(100, "Bulbasaur", PokemonType::Grass);
-			break;
-
-		case PokemonChoice::Charmander:
-			chosenPokemon = Pokemon(100, "Charmander", PokemonType::Fire);
-			break;
-
-		case PokemonChoice::Squirtle:
-			chosenPokemon = Pokemon(100, "Squirtle", PokemonType::Water);
-			break;
-		default:
-			chosenPokemon = Pokemon(100, "Pikachu", PokemonType::Electric);
-			break;
-		}
-		cout << "Player:" << name << " chose " << chosenPokemon.name <<"!"<< endl;
-	}
-	
-
-};
 
 class ProfessorOak
 {
@@ -243,7 +155,7 @@ void gameLoop(Player& Player)
 				keepPlaying = false;
 			}
 			break;
-		default:
+		  default:
 			cout << "That's not a valid choice. Try again!\n";
 			break;
 		}
@@ -267,7 +179,6 @@ int main()
 	professor.offerPokemonChoices(player);
 	professor.explainMainQuest(player);
 
-	cout << "\n[Placeholder for the Game Loop]\n";
 
 	/*cout << "But beware, Trainer, this is only the beginning." << endl;
 	cout << "Your journey is about to unfold. Now let us see if you have got what it takes to keep going!\nGood luck, and remember!! Choose wisely!" << endl;

@@ -10,11 +10,3 @@ enum class PokemonType
 	Grass,
 	Normal
 };
-
-class Pokemon {
-
-private:
-
-public:
-
-};
