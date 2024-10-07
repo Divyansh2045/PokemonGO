@@ -1,5 +1,5 @@
-﻿  Utility.cpp
-C:\Users\divya\OneDrive\Desktop\Ppppokemonnn\PokemonGO\Utility.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  main.cpp
+﻿  Professor.cpp
+  WildEncounterManager.cpp
+C:\Users\divya\OneDrive\Desktop\Ppppokemonnn\PokemonGO\WildEncounterManager.cpp(9,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Generating Code...
   PokemonGO.vcxproj -> C:\Users\divya\OneDrive\Desktop\Ppppokemonnn\PokemonGO\x64\Debug\PokemonGO.exe
