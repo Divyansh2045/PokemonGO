@@ -1,5 +1,6 @@
 #pragma once
 #include "Grass.h"
+class Player;
 
 
 class Game
@@ -12,7 +13,7 @@ public:
 	Game();
 	~Game();
 
-	void gameLoop(Player&player);
+	void gameLoop(Player & player);
 
 
 };

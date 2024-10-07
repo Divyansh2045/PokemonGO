@@ -1,14 +1,15 @@
 #pragma once
-#include "Grass.h"
 #include <string>
 #include <vector>
+
+struct Grass;
+class Pokemon;
 
 class WildEncounterManager
 {
 public:
 
 	WildEncounterManager();
-	~WildEncounterManager();
 
-	WildPokemon getRandomPokemonfromGrass(const Grass& grass);
+	Pokemon getRandomPokemonfromGrass(const Grass& grass);
 };

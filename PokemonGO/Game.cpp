@@ -6,34 +6,40 @@
 #include <iostream>
 using namespace std;
 
+
 Game::Game()
 {
-	forestGrass = { "Forest",
-		{ Pokemon("Pidgey",PokemonType::Normal,40),
-		  Pokemon("Caterpie", PokemonType::Grass,35),
-		  Pokemon("Zubat", PokemonType::Air,30)},
-		70 
+	 forestGrass = { "Forest",
+		{ Pokemon(40,"Pidgey",PokemonType::Normal),
+		  Pokemon(35,"Caterpie", PokemonType::Grass),
+		  Pokemon(70,"Zubat", PokemonType::Air)},
+		70
 	};
+}
 
-	void Game::gameLoop(Player & Player)
+	Game::~Game()
+	{
+
+	}
+
+	void Game::gameLoop(Player & player)
 
 	{
 		bool keepPlaying = true;
 		int choice;
-		cin >> choice;
 
 		while (keepPlaying)
 		{
 			Utility::clearConsole();
 
-			cout << "The world is yours to explore, " << Player.name << "What will you do next ? " << endl;
+			cout << "The world is yours to explore, " << player.name << "What will you do next ? " << endl;
 			cout << "1. Battle Wild Pokémon" << endl;
 			cout << "2. Visit PokeCenter" << endl;
 			cout << "3. Challenge Gyms" << endl;
 			cout << "4. Enter Pokémon League" << endl;
 			cout << "5. Quit" << endl;
 			cout << "Enter your choice" << endl;
-
+			cin >> choice;
 
 			// Clear the newline character left in the buffer after cin >> choice
 			Utility::clearInputBuffer();
@@ -41,9 +47,13 @@ Game::Game()
 			// Process the player's choice and display the corresponding message
 			switch (choice) {
 			case 1:
-				cout << "You look around... but all the wild Pokémon are on "
-					"vacation. Maybe try again later?\n";
+			{
+				WildEncounterManager encounterManager;
+				Pokemon encounteredPokemon =
+					encounterManager.getRandomPokemonfromGrass(forestGrass);
+				cout << "A wild " << encounteredPokemon.name << " appeared!\n";
 				break;
+			}
 			case 2:
 				cout << "You head to the PokeCenter, but Nurse Joy is out on a coffee "
 					"break. Guess your Pokémon will have to tough it out for now!\n";
@@ -75,8 +85,6 @@ Game::Game()
 			Utility::waitForEnter();
 		}
 
-		cout << "Goodbye, " << Player.name << "! Thanks for playing!\n";
+		cout << "Goodbye, " << player.name << "! Thanks for playing!\n";
 	}
 	
-	
-}

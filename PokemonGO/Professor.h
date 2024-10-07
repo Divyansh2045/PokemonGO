@@ -1,5 +1,4 @@
-/*#pragma once
-#include <string>
+#pragma once
 #include <iostream>
 using namespace std;
 
@@ -21,6 +20,5 @@ public:
 
 	void explainMainQuest(Player &player);
 
-	void gameLoop(Player& Player);
+	
 };
-*/
