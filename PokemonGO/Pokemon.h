@@ -15,6 +15,10 @@ public:
 	string name;
 	PokemonType type;
 	int health;
+	int maxHealth;
+
+	void takeDamage(int damage);
+	bool isFainted() const ;
 
 	Pokemon();
 
@@ -24,5 +28,7 @@ public:
 
 	Pokemon(int pHealth, string pName, PokemonType pType);
 
-	void attack();
+	void attack(Pokemon & target);
+
+	void battle(Pokemon& playerPokemon, Pokemon wildPokemon);
 };
