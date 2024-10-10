@@ -34,7 +34,7 @@ Pokemon::~Pokemon()
 
 void Pokemon::attack(Pokemon &target)
 {
-	int damage = 10;
+	int damage = attackPower;
 
 	cout << name << " attacks " << target.name << " for " << damage << " damage" << endl;
 	target.takeDamage(damage);
@@ -54,7 +54,7 @@ bool Pokemon::isFainted() const
 
 }
 
-void battle(Pokemon& playerPokemon, Pokemon& wildPokemon)
+void Pokemon::battle(Pokemon& playerPokemon, Pokemon& wildPokemon)
 {
 	while (!playerPokemon.isFainted() && !wildPokemon.isFainted())
 	{
@@ -78,4 +78,9 @@ void battle(Pokemon& playerPokemon, Pokemon& wildPokemon)
 		}
 
 	}
+}
+
+void Pokemon::heal()
+{
+	health = maxHealth;
 }
