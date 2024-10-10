@@ -55,8 +55,9 @@ Game::Game()
 				break;
 			}
 			case 2:
-				cout << "You head to the PokeCenter, but Nurse Joy is out on a coffee "
-					"break. Guess your Pokémon will have to tough it out for now!\n";
+				cout<<"You head to the PokeCenter.\\n";
+				player.chosenPokemon.heal();
+				cout<< player.chosenPokemon.name<< "'s health is fully restored! " << endl;
 				break;
 			case 3:
 				cout << "You march up to the Gym, but it's closed for renovations. "
