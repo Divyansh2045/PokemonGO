@@ -3,6 +3,7 @@
 #include "Utility.h"
 #include "PokemonType.h"
 #include "WildEncounterManager.h"
+#include "BattleManager.h"
 #include <iostream>
 using namespace std;
 
@@ -23,11 +24,11 @@ Game::Game()
 	}
 
 	void Game::gameLoop(Player & player)
-
 	{
+		BattleManager battleManager;
 		bool keepPlaying = true;
 		int choice;
-
+	
 		while (keepPlaying)
 		{
 			Utility::clearConsole();
@@ -49,9 +50,9 @@ Game::Game()
 			case 1:
 			{
 				WildEncounterManager encounterManager;
-				Pokemon encounteredPokemon =
-					encounterManager.getRandomPokemonfromGrass(forestGrass);
-				cout << "A wild " << encounteredPokemon.name << " appeared!\n";
+				Pokemon wildPokemon = encounterManager.getRandomPokemonfromGrass(forestGrass);
+				battleManager.startBattle(player, wildPokemon);
+
 				break;
 			}
 			case 2:
@@ -78,7 +79,7 @@ Game::Game()
 				}
 				break;
 			default:
-				cout << "That's not a valid choice. Try again!\n";
+				cout << "That is not a valid choice. Try again!\n";
 				break;
 			}
 
