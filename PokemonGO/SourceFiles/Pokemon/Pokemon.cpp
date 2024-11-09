@@ -1,6 +1,6 @@
-#include "Pokemon.h"
+#include "../HeaderFiles/Pokemon/Pokemon.h"
 #include <iostream>
-#include "PokemonType.h"
+#include "../HeaderFiles/Pokemon/PokemonType.h"
 
 
 using namespace std;

@@ -1,8 +1,8 @@
 
-#include "Player.h"
-#include "PokemonChoice.h"
-#include"PokemonType.h"
-#include"Utility.h"
+#include "../HeaderFiles/Character/Player.h"
+#include "../HeaderFiles/Pokemon/PokemonChoice.h"
+#include"../HeaderFiles/Pokemon/PokemonType.h"
+#include"../HeaderFiles/Utility/Utility.h"
 #include <iostream>
 
 using namespace std;

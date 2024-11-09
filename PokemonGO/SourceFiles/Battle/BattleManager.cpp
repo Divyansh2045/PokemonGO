@@ -1,12 +1,20 @@
-#include "BattleManager.h"
+#include "../HeaderFiles/Battle/BattleManager.h"
+#include "../HeaderFiles/Character/Player.h"
+
 #include <iostream>
 using namespace std;
-
+#include "../HeaderFiles/Utility/Utility.h"
 
 void BattleManager::startBattle(Player& player, Pokemon wildPokemon)
 {
-	std::cout << "A wild " << wildPokemon.name << " appeared!\n";
-	battle(player.chosenPokemon, wildPokemon); // why does the second parameter dont throw error
+	battleState.playerPokemon = player.chosenPokemon;
+	battleState.wildPokemon = wildPokemon;
+	battleState.playerTurn = true;
+	battleState.battleOngoing = true;
+	cout << "A wild " << wildPokemon.name << " appeared!\n";
+	 battle(player.chosenPokemon, wildPokemon); // why does the second parameter dont throw error
+	
+	
 }
 
 void BattleManager::battle(Pokemon& playerPokemon, Pokemon wildPokemon)
@@ -22,7 +30,7 @@ void BattleManager::battle(Pokemon& playerPokemon, Pokemon wildPokemon)
 		Utility::waitForEnter();
 	}
 
-	handleBattleOutcome(player, playerPokemon.isFainted());
+	handleBattleOutcome(playerPokemon, playerPokemon.isFainted());
 
 }
 
