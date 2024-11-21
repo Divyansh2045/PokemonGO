@@ -1,8 +1,9 @@
-#include "Game.h"
-#include "Player.h"
-#include "Utility.h"
-#include "PokemonType.h"
-#include "WildEncounterManager.h"
+#include "../HeaderFiles/Main/Game.h"
+#include "../HeaderFiles/Character/Player.h"
+#include "../HeaderFiles/Utility/Utility.h"
+#include "../HeaderFiles/Pokemon/PokemonType.h"
+#include "../HeaderFiles/Battle/WildEncounterManager.h"
+#include "../HeaderFiles/Battle/BattleManager.h"
 #include <iostream>
 using namespace std;
 
@@ -23,11 +24,11 @@ Game::Game()
 	}
 
 	void Game::gameLoop(Player & player)
-
 	{
+		BattleManager battleManager;
 		bool keepPlaying = true;
 		int choice;
-
+	
 		while (keepPlaying)
 		{
 			Utility::clearConsole();
@@ -49,14 +50,15 @@ Game::Game()
 			case 1:
 			{
 				WildEncounterManager encounterManager;
-				Pokemon encounteredPokemon =
-					encounterManager.getRandomPokemonfromGrass(forestGrass);
-				cout << "A wild " << encounteredPokemon.name << " appeared!\n";
+				Pokemon wildPokemon = encounterManager.getRandomPokemonfromGrass(forestGrass);
+				battleManager.startBattle(player, wildPokemon);
+
 				break;
 			}
 			case 2:
-				cout << "You head to the PokeCenter, but Nurse Joy is out on a coffee "
-					"break. Guess your Pokémon will have to tough it out for now!\n";
+				cout<<"You head to the PokeCenter.\\n";
+				player.chosenPokemon.heal();
+				cout<< player.chosenPokemon.name<< "'s health is fully restored! " << endl;
 				break;
 			case 3:
 				cout << "You march up to the Gym, but it's closed for renovations. "
@@ -77,7 +79,7 @@ Game::Game()
 				}
 				break;
 			default:
-				cout << "That's not a valid choice. Try again!\n";
+				cout << "That is not a valid choice. Try again!\n";
 				break;
 			}
 

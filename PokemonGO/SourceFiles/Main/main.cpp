@@ -1,12 +1,12 @@
 #include <iostream>
-#include "Game.h"
+#include "../HeaderFiles/Main/Game.h"
 #include<string>
-#include "Player.h"
-#include "PokemonType.h"
-#include "PokemonChoice.h"
-#include "Utility.h"
+#include "../HeaderFiles/Character/Player.h"
+#include "../HeaderFiles/Pokemon/PokemonChoice.h"
+#include "../HeaderFiles/Pokemon/PokemonType.h"
+#include "../HeaderFiles/Utility/Utility.h"
 #include <limits>
-#include "Professor.h"
+#include "../HeaderFiles/Character/Professor.h"
 
 
 using namespace std;

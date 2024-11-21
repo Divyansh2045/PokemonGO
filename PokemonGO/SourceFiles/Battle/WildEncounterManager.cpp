@@ -1,6 +1,6 @@
-#include "WildEncounterManager.h"
-#include "Grass.h"
-#include "Pokemon.h"
+#include "../HeaderFiles/Battle/WildEncounterManager.h"
+#include "../HeaderFiles/Pokemon/Grass.h"
+#include "../HeaderFiles/Pokemon/Pokemon.h"
 #include <cstdlib>
 #include <ctime>
 

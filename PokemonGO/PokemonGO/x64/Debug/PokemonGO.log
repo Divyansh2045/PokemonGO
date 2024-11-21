@@ -1,5 +1,2 @@
-﻿  Professor.cpp
-  WildEncounterManager.cpp
-C:\Users\divya\OneDrive\Desktop\Ppppokemonnn\PokemonGO\WildEncounterManager.cpp(9,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Generating Code...
-  PokemonGO.vcxproj -> C:\Users\divya\OneDrive\Desktop\Ppppokemonnn\PokemonGO\x64\Debug\PokemonGO.exe
+﻿  BattleManager.cpp
+C:\Users\divya\OneDrive\Desktop\Ppppokemonnn\PokemonGO\BattleManager.cpp(25,2): error C2664: 'void BattleManager::handleBattleOutcome(Player &,bool)': cannot convert argument 1 from 'Pokemon' to 'Player &'

@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "Pokemon.h"
+#include "../HeaderFiles/Pokemon/Pokemon.h"
 
 using namespace std;
 
